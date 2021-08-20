@@ -3,6 +3,34 @@ $(document).ready(function () {
     var floorPath = $(".home-image path");
     var counterUp = $('.counter-arrow-up');
     var counterDown = $('.counter-arrow-down');
+    var modal = $(".modal");
+    var modalCloseButton = $(".modal-close-button");
+    var viewFlatsButton = $(".viewflats");
+    var flatPath = $(".flats path");
+    var flatlink =  $(".flat-link");
+
+
+    flatlink.on('mouseover', function () { 
+        flatPath.removeClass("currentFlat");
+        flatlink.removeClass("currentFlat");
+        currentFlat = $(this).attr("data-number");
+        $(`[data-number=${currentFlat}]`).toggleClass("currentFlat");
+     });
+
+
+    flatPath.on('mouseover', function () { 
+        flatPath.removeClass("currentFlat");
+        flatlink.removeClass("currentFlat");
+        currentFlat = $(this).attr("data-number");
+        $(`[data-number=${currentFlat}]`).toggleClass("currentFlat");
+     });
+    
+    viewFlatsButton.on('click', toggleModal);
+    modalCloseButton.on('click', toggleModal);
+    floorPath.on('click', toggleModal);
+
+    function toggleModal () { modal.toggleClass('is-open'); };
+
     floorPath.on('mouseover', function () { //Через конструкцию $() Обращаюсь к элементам path класса .home-image, вешаем событие на клик
         floorPath.removeClass('currentFloor');
         currentFloor = $(this).attr("data-floor"); //Через .attr - получаем заданный атрибут
