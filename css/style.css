@@ -151,3 +151,8 @@ color: #fff;
     padding: 16px;
     cursor: pointer;
 }
+
+path.currentFloor {
+    opacity: 1;
+
+}
